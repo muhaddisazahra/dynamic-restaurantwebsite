@@ -3,10 +3,11 @@
 
 :root {
   --background: #f8f5ed;
-  --foreground: #26352b;
+  --foreground: #29382d;
 }
 
-html {
+* {
+  box-sizing: border-box;
   scroll-behavior: smooth;
 }
 
@@ -17,84 +18,53 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-/* Restaurant hero background */
 .hero-section {
-  background-image: url("https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=2000&q=90");
-  background-position: center;
+  background-image: url("https://images.unsplash.com/photo-1547592180-85f173990554?w=2000&q=90");
   background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
-/* Hero entrance animation */
-.hero-text {
-  animation: heroReveal 1s ease both;
+button,
+a {
+  cursor: pointer;
 }
 
-.hero-text:nth-child(2) {
-  animation-delay: 0.2s;
+button {
+  transition: all 0.3s ease;
 }
 
-.hero-text:nth-child(3) {
-  animation-delay: 0.4s;
+img {
+  display: block;
+  max-width: 100%;
 }
 
-.hero-text:nth-child(4) {
-  animation-delay: 0.6s;
+::selection {
+  background: #b77b52;
+  color: white;
 }
 
-@keyframes heroReveal {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
+@media (prefers-reduced-motion: no-preference) {
+  .hero-section > div:nth-child(2) {
+    animation: heroAppear 1s ease both;
   }
 
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
+  @keyframes heroAppear {
+    from {
+      opacity: 0;
+      transform: translateY(25px);
+    }
 
-/* Menu card animation */
-.menu-card {
-  animation: cardReveal 0.6s ease both;
-}
-
-@keyframes cardReveal {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 }
 
-/* General reveal animation */
-.reveal {
-  animation: fadeIn 1s ease both;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(25px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Accessibility: reduce motion when requested */
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    scroll-behavior: auto !important;
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
+@media (max-width: 640px) {
+  .hero-section {
+    min-height: 600px;
+    background-position: 60% center;
   }
 }
